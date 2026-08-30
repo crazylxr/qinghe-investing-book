@@ -316,6 +316,8 @@ body {
 .center > article .math.math-display {
   margin: 30px 0;
   padding: 24px;
+  max-width: 100%;
+  overflow-x: auto;
   color: var(--tea-deep);
   background: #f1eee3;
   border: 1px solid var(--line);
@@ -449,28 +451,10 @@ body {
 
 @media all and (min-width: 1200px) {
   .page {
-    max-width: 1580px;
-  }
-
-  .page > #quartz-body {
-    grid-template-columns: 228px minmax(0, 820px) 168px;
-    gap: 0 32px;
-  }
-
-  .center > article {
-    max-width: 820px;
-    padding-inline: 56px;
-  }
-
-  .book-reading-meter {
-    width: 168px;
-  }
-
-  html[data-reading-layout="two"] .page {
     max-width: 1500px;
   }
 
-  html[data-reading-layout="two"] .page > #quartz-body {
+  .page > #quartz-body {
     grid-template-columns: 240px minmax(0, 900px);
     grid-template-areas:
       "grid-sidebar-left grid-center"
@@ -478,18 +462,48 @@ body {
     gap: 0 40px;
   }
 
-  html[data-reading-layout="two"] .center > article {
+  .center > article {
     max-width: 900px;
     padding-inline: 70px;
   }
 
-  html[data-reading-layout="two"] .sidebar.right,
-  html[data-reading-layout="two"] .book-reading-meter {
+  .sidebar.right,
+  .book-reading-meter {
     display: none;
   }
 
-  html[data-reading-layout="two"] .book-toolbar__chapter {
+  .book-toolbar__chapter {
     margin-right: 0;
+  }
+
+  html[data-reading-layout="three"] .page {
+    max-width: 1580px;
+  }
+
+  html[data-reading-layout="three"] .page > #quartz-body {
+    grid-template-columns: 228px minmax(0, 820px) 168px;
+    grid-template-areas:
+      "grid-sidebar-left grid-center grid-sidebar-right"
+      "grid-sidebar-left grid-footer grid-sidebar-right";
+    gap: 0 32px;
+  }
+
+  html[data-reading-layout="three"] .center > article {
+    max-width: 820px;
+    padding-inline: 56px;
+  }
+
+  html[data-reading-layout="three"] .sidebar.right,
+  html[data-reading-layout="three"] .book-reading-meter {
+    display: flex;
+  }
+
+  html[data-reading-layout="three"] .book-reading-meter {
+    width: 168px;
+  }
+
+  html[data-reading-layout="three"] .book-toolbar__chapter {
+    margin-right: 112px;
   }
 
   html[data-reading-layout="focus"] .page {
@@ -668,6 +682,8 @@ body {
   }
 
   .page > #quartz-body footer {
+    box-sizing: border-box;
+    width: 100%;
     padding: 20px 24px 0;
   }
 }

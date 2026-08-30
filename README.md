@@ -96,21 +96,21 @@
 
 ## 阅读体验
 
-站点采用纸本阅读风格：桌面端同时展示全书目录、正文、阅读进度和章内目录；移动端则收起辅助信息，把空间留给正文。
+站点采用纸本阅读风格。桌面端首次访问默认使用「全书目录 + 加宽正文」的两栏布局，也可以切换为三栏或专注阅读；选择会在后续章节中保留。移动端自动收起辅助信息，以单栏正文为主，并保留紧凑的布局与目录入口。
 
 <table>
   <tr>
     <td width="68%" valign="top">
       <a href="https://crazylxr.github.io/qinghe-investing-book/chapter-10">
-        <img src="docs/images/readme/book-chapter-desktop.jpg" alt="桌面端正文阅读页：左侧全书目录、中间正文、右侧阅读进度和章内目录">
+        <img src="docs/images/readme/book-chapter-desktop.jpg" alt="桌面端两栏阅读页：左侧全书目录与右侧加宽正文">
       </a>
-      <p align="center"><sub>桌面端：全书目录、正文与阅读进度同时可见</sub></p>
+      <p align="center"><sub>桌面端：默认两栏，正文更宽，也可切换三栏或专注阅读</sub></p>
     </td>
     <td width="32%" valign="top">
       <a href="https://crazylxr.github.io/qinghe-investing-book/chapter-10">
         <img src="docs/images/readme/book-chapter-mobile.jpg" alt="手机端正文阅读页">
       </a>
-      <p align="center"><sub>移动端：专注正文，目录随时展开</sub></p>
+      <p align="center"><sub>移动端：自动使用单栏正文，目录与布局入口随时可用</sub></p>
     </td>
   </tr>
 </table>
@@ -119,6 +119,7 @@
 
 - 中文全文搜索；
 - 稳定章节链接与上一章 / 下一章导航；
+- 三栏、两栏与专注阅读切换，并自动记忆读者选择；
 - 阅读进度、章内目录和移动端折叠菜单；
 - Obsidian Callout、脚注、表格、LaTeX 公式和插图；
 - 响应式排版，适配桌面、平板和手机；
