@@ -1,22 +1,28 @@
 # 用一家奶茶店学会股票投资
 
-《用一家奶茶店学会股票投资》在线阅读网站。
+《用一家奶茶店学会股票投资》的在线书站，基于 Quartz 5 构建并发布到 GitHub Pages。
 
-当前发布的是书站 UI 原型，提供两套可切换主题：
-
-- A：纸本主题
-- C：研究主题
-
-## 本地预览
+## 本地开发
 
 ```bash
-python3 -m http.server 4317
+npm ci
+npx quartz plugin install
+npm run sync:book -- --source "/path/to/Obsidian/用一家奶茶店学会股票投资"
+npm run check
+npm run build
 ```
 
-打开 <http://127.0.0.1:4317/?variant=A>。
+本地预览：
 
-## 在线预览
+```bash
+npm run dev
+```
 
-<https://crazylxr.github.io/qinghe-investing-book/>
+## 内容边界
 
-> 当前页面为原型，不包含 Obsidian 知识库中的内部资料、数据底稿和来源台账。
+- `book.manifest.json` 是网站章节顺序、公开状态和稳定 URL 的唯一配置。
+- `scripts/sync-book.mjs` 只同步清单内正文与正文引用的图片。
+- Obsidian 书稿仍是正文唯一来源；仓库内 `content/` 是可独立构建、可提交的发布快照。
+- 数据底稿、案例核验、财务模型和其他 Vault 内容不会进入公开站点。
+
+在线阅读：<https://crazylxr.github.io/qinghe-investing-book/>
