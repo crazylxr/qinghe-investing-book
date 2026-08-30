@@ -1,0 +1,169 @@
+{
+  "title": "用一家奶茶店学会股票投资",
+  "subtitle": "从看懂一门生意，到判断它值多少钱、能否长期复利",
+  "revisionNotice": "内容持续修订中",
+  "entries": [
+    {
+      "id": "home",
+      "source": "目录.md",
+      "output": "index.md",
+      "url": "/",
+      "label": "完整目录",
+      "part": "前置",
+      "status": "published"
+    },
+    {
+      "id": "preface",
+      "source": "前言.md",
+      "output": "preface.md",
+      "url": "/preface",
+      "label": "前言：老板开价80万，这家奶茶店你买吗？",
+      "part": "前置",
+      "status": "published"
+    },
+    {
+      "id": "chapter-00",
+      "source": "00 序章 如果我真的要买下一家奶茶店.md",
+      "output": "chapter-00.md",
+      "url": "/chapter-00",
+      "label": "序章：如果我真的要买下一家奶茶店",
+      "part": "前置",
+      "status": "published"
+    },
+    {
+      "id": "chapter-01",
+      "source": "01 一杯奶茶，是怎样变成一门生意的.md",
+      "output": "chapter-01.md",
+      "url": "/chapter-01",
+      "label": "第一章：一杯奶茶，是怎样变成一门生意的？",
+      "part": "第一部分：看懂生意与现金",
+      "status": "published"
+    },
+    {
+      "id": "chapter-02",
+      "source": "02 奶茶店一年赚了10万，为什么账上却没钱.md",
+      "output": "chapter-02.md",
+      "url": "/chapter-02",
+      "label": "第二章：奶茶店一年赚了10万，为什么账上却没钱？",
+      "part": "第一部分：看懂生意与现金",
+      "status": "published"
+    },
+    {
+      "id": "chapter-03",
+      "source": "03 奶茶店赚到的钱，能不能继续生出更多的钱.md",
+      "output": "chapter-03.md",
+      "url": "/chapter-03",
+      "label": "第三章：奶茶店赚到的钱，能不能继续生出更多的钱？",
+      "part": "第二部分：资本回报与增长",
+      "status": "published"
+    },
+    {
+      "id": "chapter-04",
+      "source": "04 为什么有的奶茶店越开越赚钱，有的越开越亏.md",
+      "output": "chapter-04.md",
+      "url": "/chapter-04",
+      "label": "第四章：为什么有的奶茶店越开越赚钱，有的越开越亏？",
+      "part": "第二部分：资本回报与增长",
+      "status": "published"
+    },
+    {
+      "id": "chapter-05",
+      "source": "05 隔壁也开了一家奶茶店，你的高利润还能维持多久.md",
+      "output": "chapter-05.md",
+      "url": "/chapter-05",
+      "label": "第五章：隔壁也开了一家奶茶店，你的高利润还能维持多久？",
+      "part": "第三部分：竞争与持续性",
+      "status": "published"
+    },
+    {
+      "id": "chapter-06",
+      "source": "06 一杯奶茶到底该卖10元还是30元.md",
+      "output": "chapter-06.md",
+      "url": "/chapter-06",
+      "label": "第六章：一杯奶茶到底该卖10元还是30元？",
+      "part": "第三部分：竞争与持续性",
+      "status": "published"
+    },
+    {
+      "id": "chapter-07",
+      "source": "07 奶茶店借了80万开店，是聪明还是危险.md",
+      "output": "chapter-07.md",
+      "url": "/chapter-07",
+      "label": "第七章：奶茶店借了80万开店，是聪明还是危险？",
+      "part": "第四部分：风险与资本配置",
+      "status": "published"
+    },
+    {
+      "id": "chapter-08",
+      "source": "08 奶茶店老板赚了钱，却全部拿去乱投资.md",
+      "output": "chapter-08.md",
+      "url": "/chapter-08",
+      "label": "第八章：奶茶店老板赚了钱，却全部拿去乱投资",
+      "part": "第四部分：风险与资本配置",
+      "status": "published"
+    },
+    {
+      "id": "chapter-09",
+      "source": "09 这家奶茶店明明很好，为什么买入后还是亏钱.md",
+      "output": "chapter-09.md",
+      "url": "/chapter-09",
+      "label": "第九章：这家奶茶店明明很好，为什么买入后还是亏钱？",
+      "part": "第五部分：价格与价值",
+      "status": "published"
+    },
+    {
+      "id": "chapter-10",
+      "source": "10 我到底应该用多少钱买下这家奶茶店.md",
+      "output": "chapter-10.md",
+      "url": "/chapter-10",
+      "label": "第十章：我到底应该用多少钱买下这家奶茶店？",
+      "part": "第五部分：价格与价值",
+      "status": "published"
+    },
+    {
+      "id": "chapter-11",
+      "source": "11 我已经买下这家奶茶店，什么时候应该卖掉.md",
+      "output": "chapter-11.md",
+      "url": "/chapter-11",
+      "label": "第十一章：我已经买下这家奶茶店，什么时候应该卖掉？",
+      "part": "第六部分：持有、退出与复盘",
+      "status": "published"
+    },
+    {
+      "id": "conclusion",
+      "label": "结语：从买下一家店，到拥有一家公司的部分未来",
+      "part": "收束",
+      "status": "coming-soon"
+    },
+    {
+      "id": "appendix-a",
+      "label": "附录A：如果真要买一家奶茶店——实地尽调清单",
+      "part": "附录",
+      "status": "coming-soon"
+    },
+    {
+      "id": "appendix-b",
+      "label": "附录B：核心指标与口径速查表",
+      "part": "附录",
+      "status": "coming-soon"
+    },
+    {
+      "id": "appendix-c",
+      "label": "附录C：估值工具箱",
+      "part": "附录",
+      "status": "coming-soon"
+    },
+    {
+      "id": "appendix-d",
+      "label": "附录D：普通框架失效时怎么办",
+      "part": "附录",
+      "status": "coming-soon"
+    },
+    {
+      "id": "appendix-e",
+      "label": "附录E：十年财务分析与投资备忘录模板",
+      "part": "附录",
+      "status": "coming-soon"
+    }
+  ]
+}

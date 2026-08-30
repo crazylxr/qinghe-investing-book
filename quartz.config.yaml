@@ -1,0 +1,139 @@
+# yaml-language-server: $schema=./quartz/plugins/quartz-plugins.schema.json
+configuration:
+  pageTitle: 用一家奶茶店学会股票投资
+  pageTitleSuffix: "｜青禾投资课"
+  enableSPA: true
+  enablePopovers: false
+  analytics: null
+  locale: zh-CN
+  baseUrl: crazylxr.github.io/qinghe-investing-book
+  ignorePatterns:
+    - .obsidian
+    - private
+    - source_notes
+  theme:
+    fontOrigin: googleFonts
+    cdnCaching: true
+    typography:
+      header: Noto Serif SC
+      body: Noto Sans SC
+      code: IBM Plex Mono
+    colors:
+      lightMode:
+        light: "#f7f1e7"
+        lightgray: "#e7dccb"
+        gray: "#a99a86"
+        darkgray: "#594f42"
+        dark: "#27231e"
+        secondary: "#8b4c32"
+        tertiary: "#4f6b57"
+        highlight: "rgba(139, 76, 50, 0.12)"
+        textHighlight: "#efd78488"
+      darkMode:
+        light: "#191713"
+        lightgray: "#302b25"
+        gray: "#746b60"
+        darkgray: "#d5c9b8"
+        dark: "#f2eadf"
+        secondary: "#d99a76"
+        tertiary: "#9ab59e"
+        highlight: "rgba(217, 154, 118, 0.14)"
+        textHighlight: "#74612488"
+plugins:
+  - source: "@quartz-community/note-properties"
+    enabled: true
+    options:
+      includeAll: false
+      includedProperties: []
+      excludedProperties: []
+      hidePropertiesView: true
+      delimiters: "---"
+      language: yaml
+    order: 5
+  - source: "@quartz-community/obsidian-flavored-markdown"
+    enabled: true
+    options:
+      enableInHtmlEmbed: false
+      enableCheckbox: true
+    order: 10
+  - source: "@quartz-community/github-flavored-markdown"
+    enabled: true
+    order: 20
+  - source: "@quartz-community/latex"
+    enabled: true
+    options:
+      renderEngine: katex
+    order: 30
+  - source: "@quartz-community/table-of-contents"
+    enabled: true
+    order: 40
+    layout:
+      position: right
+      priority: 10
+  - source: "@quartz-community/crawl-links"
+    enabled: true
+    options:
+      markdownLinkResolution: shortest
+    order: 50
+  - source: "@quartz-community/description"
+    enabled: true
+    order: 60
+  - source: "@quartz-community/quartz-fonts"
+    enabled: true
+  - source: "@quartz-community/remove-draft"
+    enabled: true
+  - source: "@quartz-community/content-index"
+    enabled: true
+    options:
+      enableSiteMap: true
+      enableRSS: false
+  - source: "@quartz-community/favicon"
+    enabled: true
+  - source: "@quartz-community/og-image"
+    enabled: true
+  - source: "@quartz-community/content-page"
+    enabled: true
+  - source: "@quartz-community/page-title"
+    enabled: true
+    layout:
+      position: left
+      priority: 10
+  - source: "@quartz-community/search"
+    enabled: true
+    layout:
+      position: left
+      priority: 20
+  - source: "@quartz-community/explorer"
+    enabled: true
+    options:
+      title: 全书目录
+      folderClickBehavior: collapse
+      folderDefaultState: open
+      useSavedState: true
+    layout:
+      position: left
+      priority: 30
+  - source: "@quartz-community/footer"
+    enabled: true
+    options:
+      links:
+        GitHub: https://github.com/crazylxr/qinghe-investing-book
+    layout:
+      position: footer
+      priority: 50
+  - source: "@qinghe/book-toolbar"
+    enabled: true
+    options: {}
+    order: 50
+    layout:
+      position: beforeBody
+      priority: 1
+layout:
+  groups: {}
+  byPageType:
+    content: {}
+    "404":
+      positions:
+        beforeBody: []
+        left: []
+        right: []

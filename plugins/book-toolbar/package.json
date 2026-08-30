@@ -1,0 +1,35 @@
+{
+  "name": "@qinghe/book-toolbar",
+  "version": "1.0.0",
+  "type": "module",
+  "private": true,
+  "exports": {
+    ".": "./dist/index.js",
+    "./components": "./dist/components.js",
+    "./package.json": "./package.json"
+  },
+  "peerDependencies": {
+    "preact": "^10.0.0"
+  },
+  "quartz": {
+    "name": "book-toolbar",
+    "displayName": "Book Toolbar",
+    "category": "component",
+    "version": "1.0.0",
+    "quartzVersion": ">=5.0.0",
+    "dependencies": [],
+    "defaultOrder": 50,
+    "defaultEnabled": true,
+    "defaultOptions": {},
+    "components": {
+      "BookToolbar": {
+        "name": "book-toolbar",
+        "displayName": "Book Toolbar",
+        "description": "Book reading progress and paper/research theme switcher",
+        "version": "1.0.0",
+        "defaultPosition": "beforeBody",
+        "defaultPriority": 1
+      }
+    }
+  }
+}
