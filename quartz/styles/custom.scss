@@ -447,6 +447,88 @@ body {
   opacity: 0.72;
 }
 
+@media all and (min-width: 1200px) {
+  .page {
+    max-width: 1580px;
+  }
+
+  .page > #quartz-body {
+    grid-template-columns: 228px minmax(0, 820px) 168px;
+    gap: 0 32px;
+  }
+
+  .center > article {
+    max-width: 820px;
+    padding-inline: 56px;
+  }
+
+  .book-reading-meter {
+    width: 168px;
+  }
+
+  html[data-reading-layout="two"] .page {
+    max-width: 1500px;
+  }
+
+  html[data-reading-layout="two"] .page > #quartz-body {
+    grid-template-columns: 240px minmax(0, 900px);
+    grid-template-areas:
+      "grid-sidebar-left grid-center"
+      "grid-sidebar-left grid-footer";
+    gap: 0 40px;
+  }
+
+  html[data-reading-layout="two"] .center > article {
+    max-width: 900px;
+    padding-inline: 70px;
+  }
+
+  html[data-reading-layout="two"] .sidebar.right,
+  html[data-reading-layout="two"] .book-reading-meter {
+    display: none;
+  }
+
+  html[data-reading-layout="two"] .book-toolbar__chapter {
+    margin-right: 0;
+  }
+
+  html[data-reading-layout="focus"] .page {
+    max-width: 1180px;
+  }
+
+  html[data-reading-layout="focus"] .page > #quartz-body {
+    grid-template-columns: minmax(0, 960px);
+    grid-template-areas:
+      "grid-center"
+      "grid-footer";
+    justify-content: center;
+    gap: 0;
+  }
+
+  html[data-reading-layout="focus"] .center > article {
+    max-width: 960px;
+    padding-inline: 100px;
+  }
+
+  html[data-reading-layout="focus"] .sidebar.left,
+  html[data-reading-layout="focus"] .sidebar.right,
+  html[data-reading-layout="focus"] .book-reading-meter {
+    display: none;
+  }
+
+  html[data-reading-layout="focus"] .book-toolbar__chapter {
+    margin-right: 0;
+  }
+
+  html[data-reading-layout="focus"] .center > article .markdown-preview-view > p:has(> img),
+  html[data-reading-layout="focus"] .center > article .markdown-preview-view > table,
+  html[data-reading-layout="focus"] .center > article .markdown-preview-view > .math-display {
+    width: 880px;
+    max-width: 880px;
+    margin-left: -60px;
+  }
+}
+
 @media all and (max-width: 1199px) {
   .page > #quartz-body {
     grid-template-columns: 220px minmax(0, 720px);
@@ -459,6 +541,24 @@ body {
   .sidebar.right,
   .book-reading-meter {
     display: none;
+  }
+}
+
+@media all and (min-width: 801px) and (max-width: 1199px) {
+  html[data-reading-layout="focus"] .page > #quartz-body {
+    grid-template-columns: minmax(0, 900px);
+    grid-template-areas:
+      "grid-center"
+      "grid-footer";
+    justify-content: center;
+  }
+
+  html[data-reading-layout="focus"] .sidebar.left {
+    display: none;
+  }
+
+  html[data-reading-layout="focus"] .center > article {
+    max-width: 900px;
   }
 }
 
@@ -528,6 +628,11 @@ body {
     top: 15px;
     right: 18px;
     width: 80px;
+  }
+
+  html[data-reading-layout="focus"] .sidebar.left .explorer,
+  html[data-reading-layout="focus"] .sidebar.left .search {
+    display: none;
   }
 
   .center > article {
