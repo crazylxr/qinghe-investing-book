@@ -6,7 +6,7 @@
 
 一本写给普通人的股票投资入门书。全书只用同一家虚构企业——**青禾茶铺**——带你走完理解生意、读懂财务、判断竞争力、估值、买入、持有与卖出的完整过程。
 
-[![在线阅读](https://img.shields.io/badge/在线阅读-立即开始-3A7D6B?style=for-the-badge)](https://crazylxr.github.io/qinghe-investing-book/)
+[![在线阅读](https://img.shields.io/badge/在线阅读-立即开始-3A7D6B?style=for-the-badge)](https://qinghe.taoweng.site/)
 [![GitHub Pages](https://img.shields.io/github/actions/workflow/status/crazylxr/qinghe-investing-book/deploy-pages.yml?branch=main&style=for-the-badge&label=GitHub%20Pages)](https://github.com/crazylxr/qinghe-investing-book/actions/workflows/deploy-pages.yml)
 [![Quartz 5](https://img.shields.io/badge/Quartz-5-234B42?style=for-the-badge)](https://quartz.jzhao.xyz/)
 
@@ -14,7 +14,7 @@
 
 </div>
 
-[![《用一家奶茶店学会股票投资》在线书站首页](docs/images/readme/book-home-desktop.jpg)](https://crazylxr.github.io/qinghe-investing-book/)
+[![《用一家奶茶店学会股票投资》在线书站首页](docs/images/readme/book-home-desktop.jpg)](https://qinghe.taoweng.site/)
 
 ## 这本书在讲什么？
 
@@ -54,43 +54,43 @@
 | 连接价格与价值     | 好公司为何也会买贵？怎样计算合理价值区间？ | 第 9—10 章 |
 | 持有、退出与复盘   | 哪些变化足以推翻最初的投资逻辑？           | 第 11 章   |
 
-如果你是第一次接触基本面投资，建议从前言开始顺序阅读；如果已经具备基础，可以从[第九章：好公司为什么也会买亏](https://crazylxr.github.io/qinghe-investing-book/chapter-09)或[第十章：怎样估算合理价格](https://crazylxr.github.io/qinghe-investing-book/chapter-10)开始，再回头补齐前面的分析链条。
+如果你是第一次接触基本面投资，建议从前言开始顺序阅读；如果已经具备基础，可以从[第九章：好公司为什么也会买亏](https://qinghe.taoweng.site/chapter-09)或[第十章：怎样估算合理价格](https://qinghe.taoweng.site/chapter-10)开始，再回头补齐前面的分析链条。
 
 ## 全书目录
 
 ### 前置：先把股票重新看成一门生意
 
-- [前言：老板开价 80 万，这家奶茶店你买吗？](https://crazylxr.github.io/qinghe-investing-book/preface)
-- [序章：如果我真的要买下一家奶茶店](https://crazylxr.github.io/qinghe-investing-book/chapter-00)
+- [前言：老板开价 80 万，这家奶茶店你买吗？](https://qinghe.taoweng.site/preface)
+- [序章：如果我真的要买下一家奶茶店](https://qinghe.taoweng.site/chapter-00)
 
 ### 第一部分：看懂生意与现金
 
-1. [一杯奶茶，是怎样变成一门生意的？](https://crazylxr.github.io/qinghe-investing-book/chapter-01)
-2. [奶茶店一年赚了 10 万，为什么账上却没钱？](https://crazylxr.github.io/qinghe-investing-book/chapter-02)
+1. [一杯奶茶，是怎样变成一门生意的？](https://qinghe.taoweng.site/chapter-01)
+2. [奶茶店一年赚了 10 万，为什么账上却没钱？](https://qinghe.taoweng.site/chapter-02)
 
 ### 第二部分：资本回报与增长
 
-3. [奶茶店赚到的钱，能不能继续生出更多的钱？](https://crazylxr.github.io/qinghe-investing-book/chapter-03)
-4. [为什么有的奶茶店越开越赚钱，有的越开越亏？](https://crazylxr.github.io/qinghe-investing-book/chapter-04)
+3. [奶茶店赚到的钱，能不能继续生出更多的钱？](https://qinghe.taoweng.site/chapter-03)
+4. [为什么有的奶茶店越开越赚钱，有的越开越亏？](https://qinghe.taoweng.site/chapter-04)
 
 ### 第三部分：竞争与持续性
 
-5. [隔壁也开了一家奶茶店，你的高利润还能维持多久？](https://crazylxr.github.io/qinghe-investing-book/chapter-05)
-6. [一杯奶茶到底该卖 10 元还是 30 元？](https://crazylxr.github.io/qinghe-investing-book/chapter-06)
+5. [隔壁也开了一家奶茶店，你的高利润还能维持多久？](https://qinghe.taoweng.site/chapter-05)
+6. [一杯奶茶到底该卖 10 元还是 30 元？](https://qinghe.taoweng.site/chapter-06)
 
 ### 第四部分：风险与资本配置
 
-7. [奶茶店借了 80 万开店，是聪明还是危险？](https://crazylxr.github.io/qinghe-investing-book/chapter-07)
-8. [奶茶店老板赚了钱，却全部拿去乱投资](https://crazylxr.github.io/qinghe-investing-book/chapter-08)
+7. [奶茶店借了 80 万开店，是聪明还是危险？](https://qinghe.taoweng.site/chapter-07)
+8. [奶茶店老板赚了钱，却全部拿去乱投资](https://qinghe.taoweng.site/chapter-08)
 
 ### 第五部分：价格与价值
 
-9. [这家奶茶店明明很好，为什么买入后还是亏钱？](https://crazylxr.github.io/qinghe-investing-book/chapter-09)
-10. [我到底应该用多少钱买下这家奶茶店？](https://crazylxr.github.io/qinghe-investing-book/chapter-10)
+9. [这家奶茶店明明很好，为什么买入后还是亏钱？](https://qinghe.taoweng.site/chapter-09)
+10. [我到底应该用多少钱买下这家奶茶店？](https://qinghe.taoweng.site/chapter-10)
 
 ### 第六部分：持有、退出与复盘
 
-11. [我已经买下这家奶茶店，什么时候应该卖掉？](https://crazylxr.github.io/qinghe-investing-book/chapter-11)
+11. [我已经买下这家奶茶店，什么时候应该卖掉？](https://qinghe.taoweng.site/chapter-11)
 
 结语与 5 个附录正在补充中，已完成的 14 篇内容（目录、前言、序章及第 1—11 章）均可在线完整阅读。
 
@@ -101,13 +101,13 @@
 <table>
   <tr>
     <td width="68%" valign="top">
-      <a href="https://crazylxr.github.io/qinghe-investing-book/chapter-10">
+      <a href="https://qinghe.taoweng.site/chapter-10">
         <img src="docs/images/readme/book-chapter-desktop.jpg" alt="桌面端两栏阅读页：左侧全书目录与右侧加宽正文">
       </a>
       <p align="center"><sub>桌面端：默认两栏，正文更宽，也可切换三栏或专注阅读</sub></p>
     </td>
     <td width="32%" valign="top">
-      <a href="https://crazylxr.github.io/qinghe-investing-book/chapter-10">
+      <a href="https://qinghe.taoweng.site/chapter-10">
         <img src="docs/images/readme/book-chapter-mobile.jpg" alt="手机端正文阅读页">
       </a>
       <p align="center"><sub>移动端：自动使用单栏正文，目录与布局入口随时可用</sub></p>
@@ -129,7 +129,7 @@
 
 如果你觉得这本书对朋友有帮助，可以直接转发在线地址：
 
-> 《用一家奶茶店学会股票投资》：不用先背财务指标，跟着一家虚构奶茶店，从 80 万元报价开始，一步步学会看生意、看现金流、判断护城河、做估值，并决定什么时候买入、持有或卖出。在线免费阅读：https://crazylxr.github.io/qinghe-investing-book/
+> 《用一家奶茶店学会股票投资》：不用先背财务指标，跟着一家虚构奶茶店，从 80 万元报价开始，一步步学会看生意、看现金流、判断护城河、做估值，并决定什么时候买入、持有或卖出。在线免费阅读：https://qinghe.taoweng.site/
 
 欢迎通过 [Issue](https://github.com/crazylxr/qinghe-investing-book/issues) 提交错别字、断链、概念疑问和阅读建议，也欢迎把项目分享给正在学习基本面投资的朋友。
 
@@ -265,6 +265,6 @@ git diff -- content book.manifest.json
 
 **先看懂一门生意，再决定要不要成为它的股东。**
 
-[开始阅读](https://crazylxr.github.io/qinghe-investing-book/) · [完整目录](https://crazylxr.github.io/qinghe-investing-book/) · [提交反馈](https://github.com/crazylxr/qinghe-investing-book/issues)
+[开始阅读](https://qinghe.taoweng.site/) · [完整目录](https://qinghe.taoweng.site/) · [提交反馈](https://github.com/crazylxr/qinghe-investing-book/issues)
 
 </div>
