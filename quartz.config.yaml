@@ -4,7 +4,10 @@ configuration:
   pageTitleSuffix: "｜青禾投资课"
   enableSPA: true
   enablePopovers: false
-  analytics: null
+  analytics:
+    provider: umami
+    websiteId: b8b4efd0-332a-4c9a-96d2-e1d127155f5b
+    host: https://cloud.umami.is
   locale: zh-CN
   baseUrl: crazylxr.github.io/qinghe-investing-book
   ignorePatterns:
