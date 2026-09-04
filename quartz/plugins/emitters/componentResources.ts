@@ -90,9 +90,16 @@ function addGlobalPageResources(ctx: BuildCtx, componentResources: ComponentReso
     componentResources.css.push(popoverStyle)
   }
 
-  if (cfg.analytics?.provider === "google") {
-    const tagId = cfg.analytics.tagId
-    componentResources.afterDOMLoaded.push(`
+  const analyticsProviders = cfg.analytics
+    ? Array.isArray(cfg.analytics)
+      ? cfg.analytics
+      : [cfg.analytics]
+    : []
+
+  for (const analytics of analyticsProviders) {
+    if (analytics.provider === "google") {
+      const tagId = analytics.tagId
+      componentResources.afterDOMLoaded.push(`
       const gtagScript = document.createElement('script');
       gtagScript.src = 'https://www.googletagmanager.com/gtag/js?id=${tagId}';
       gtagScript.defer = true;
@@ -111,9 +118,9 @@ function addGlobalPageResources(ctx: BuildCtx, componentResources: ComponentReso
       
       document.head.appendChild(gtagScript);
     `)
-  } else if (cfg.analytics?.provider === "plausible") {
-    const plausibleHost = cfg.analytics.host ?? "https://plausible.io"
-    componentResources.afterDOMLoaded.push(`
+    } else if (analytics.provider === "plausible") {
+      const plausibleHost = analytics.host ?? "https://plausible.io"
+      componentResources.afterDOMLoaded.push(`
       const plausibleScript = document.createElement('script');
       plausibleScript.src = '${plausibleHost}/js/script.manual.js';
       plausibleScript.setAttribute('data-domain', location.hostname);
@@ -128,27 +135,27 @@ function addGlobalPageResources(ctx: BuildCtx, componentResources: ComponentReso
 
       document.head.appendChild(plausibleScript);
     `)
-  } else if (cfg.analytics?.provider === "umami") {
-    componentResources.afterDOMLoaded.push(`
+    } else if (analytics.provider === "umami") {
+      componentResources.afterDOMLoaded.push(`
       const umamiScript = document.createElement("script");
-      umamiScript.src = "${cfg.analytics.host ?? "https://analytics.umami.is"}/script.js";
-      umamiScript.setAttribute("data-website-id", "${cfg.analytics.websiteId}");
+      umamiScript.src = "${analytics.host ?? "https://analytics.umami.is"}/script.js";
+      umamiScript.setAttribute("data-website-id", "${analytics.websiteId}");
       umamiScript.setAttribute("data-auto-track", "true");
       umamiScript.defer = true;
 
       document.head.appendChild(umamiScript);
     `)
-  } else if (cfg.analytics?.provider === "goatcounter") {
-    componentResources.afterDOMLoaded.push(`
+    } else if (analytics.provider === "goatcounter") {
+      componentResources.afterDOMLoaded.push(`
       const goatcounterScriptPre = document.createElement('script');
       goatcounterScriptPre.textContent = \`
         window.goatcounter = { no_onload: true };
       \`;
       document.head.appendChild(goatcounterScriptPre);
 
-      const endpoint = "https://${cfg.analytics.websiteId}.${cfg.analytics.host ?? "goatcounter.com"}/count";
+      const endpoint = "https://${analytics.websiteId}.${analytics.host ?? "goatcounter.com"}/count";
       const goatcounterScript = document.createElement('script');
-      goatcounterScript.src = "${cfg.analytics.scriptSrc ?? "https://gc.zgo.at/count.js"}";
+      goatcounterScript.src = "${analytics.scriptSrc ?? "https://gc.zgo.at/count.js"}";
       goatcounterScript.defer = true;
       goatcounterScript.setAttribute('data-goatcounter', endpoint);
       goatcounterScript.onload = () => {
@@ -161,12 +168,12 @@ function addGlobalPageResources(ctx: BuildCtx, componentResources: ComponentReso
 
       document.head.appendChild(goatcounterScript);
     `)
-  } else if (cfg.analytics?.provider === "posthog") {
-    componentResources.afterDOMLoaded.push(`
+    } else if (analytics.provider === "posthog") {
+      componentResources.afterDOMLoaded.push(`
       const posthogScript = document.createElement("script");
       posthogScript.innerHTML= \`!function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.async=!0,p.src=s.api_host+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="capture identify alias people.set people.set_once set_config register register_once unregister opt_out_capturing has_opted_out_capturing opt_in_capturing reset isFeatureEnabled onFeatureFlags getFeatureFlag getFeatureFlagPayload reloadFeatureFlags group updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures getActiveMatchingSurveys getSurveys onSessionId".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
-      posthog.init('${cfg.analytics.apiKey}', {
-        api_host: '${cfg.analytics.host ?? "https://app.posthog.com"}',
+      posthog.init('${analytics.apiKey}', {
+        api_host: '${analytics.host ?? "https://app.posthog.com"}',
         capture_pageview: false,
       });
       document.addEventListener('nav', () => {
@@ -175,9 +182,9 @@ function addGlobalPageResources(ctx: BuildCtx, componentResources: ComponentReso
 
       document.head.appendChild(posthogScript);
     `)
-  } else if (cfg.analytics?.provider === "tinylytics") {
-    const siteId = cfg.analytics.siteId
-    componentResources.afterDOMLoaded.push(`
+    } else if (analytics.provider === "tinylytics") {
+      const siteId = analytics.siteId
+      componentResources.afterDOMLoaded.push(`
       const tinylyticsScript = document.createElement('script');
       tinylyticsScript.src = 'https://tinylytics.app/embed/${siteId}.js?spa';
       tinylyticsScript.defer = true;
@@ -190,24 +197,24 @@ function addGlobalPageResources(ctx: BuildCtx, componentResources: ComponentReso
       
       document.head.appendChild(tinylyticsScript);
     `)
-  } else if (cfg.analytics?.provider === "cabin") {
-    componentResources.afterDOMLoaded.push(`
+    } else if (analytics.provider === "cabin") {
+      componentResources.afterDOMLoaded.push(`
       const cabinScript = document.createElement("script")
-      cabinScript.src = "${cfg.analytics.host ?? "https://scripts.withcabin.com"}/hello.js"
+      cabinScript.src = "${analytics.host ?? "https://scripts.withcabin.com"}/hello.js"
       cabinScript.defer = true
       document.head.appendChild(cabinScript)
     `)
-  } else if (cfg.analytics?.provider === "clarity") {
-    componentResources.afterDOMLoaded.push(`
+    } else if (analytics.provider === "clarity") {
+      componentResources.afterDOMLoaded.push(`
       const clarityScript = document.createElement("script")
       clarityScript.innerHTML= \`(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
       t=l.createElement(r);t.defer=1;t.src="https://www.clarity.ms/tag/"+i;
       y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-      })(window, document, "clarity", "script", "${cfg.analytics.projectId}");\`
+      })(window, document, "clarity", "script", "${analytics.projectId}");\`
       document.head.appendChild(clarityScript)
     `)
-  } else if (cfg.analytics?.provider === "matomo") {
-    componentResources.afterDOMLoaded.push(`
+    } else if (analytics.provider === "matomo") {
+      componentResources.afterDOMLoaded.push(`
       const matomoScript = document.createElement("script");
       matomoScript.innerHTML = \`
       let _paq = window._paq = window._paq || [];
@@ -223,9 +230,9 @@ function addGlobalPageResources(ctx: BuildCtx, componentResources: ComponentReso
       _paq.push(['trackPageView']);
       _paq.push(['enableLinkTracking']);
       (function() {
-        const u="//${cfg.analytics.host}/";
+        const u="//${analytics.host}/";
         _paq.push(['setTrackerUrl', u+'matomo.php']);
-        _paq.push(['setSiteId', ${cfg.analytics.siteId}]);
+        _paq.push(['setSiteId', ${analytics.siteId}]);
         const d=document, g=d.createElement('script'), s=d.getElementsByTagName
 ('script')[0];
         g.type='text/javascript'; g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
@@ -233,29 +240,30 @@ function addGlobalPageResources(ctx: BuildCtx, componentResources: ComponentReso
       \`
       document.head.appendChild(matomoScript);
     `)
-  } else if (cfg.analytics?.provider === "vercel") {
-    /**
-     * script from {@link https://vercel.com/docs/analytics/quickstart?framework=html#add-the-script-tag-to-your-site|Vercel Docs}
-     */
-    componentResources.beforeDOMLoaded.push(`
+    } else if (analytics.provider === "vercel") {
+      /**
+       * script from {@link https://vercel.com/docs/analytics/quickstart?framework=html#add-the-script-tag-to-your-site|Vercel Docs}
+       */
+      componentResources.beforeDOMLoaded.push(`
       window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
     `)
-    componentResources.afterDOMLoaded.push(`
+      componentResources.afterDOMLoaded.push(`
       const vercelInsightsScript = document.createElement("script")
       vercelInsightsScript.src = "/_vercel/insights/script.js"
       vercelInsightsScript.defer = true
       document.head.appendChild(vercelInsightsScript)
     `)
-  } else if (cfg.analytics?.provider === "rybbit") {
-    componentResources.afterDOMLoaded.push(`
+    } else if (analytics.provider === "rybbit") {
+      componentResources.afterDOMLoaded.push(`
       const rybbitScript = document.createElement("script");
-      rybbitScript.src = "${cfg.analytics.host ?? "https://app.rybbit.io"}/api/script.js";
-      rybbitScript.setAttribute("data-site-id", "${cfg.analytics.siteId}");
+      rybbitScript.src = "${analytics.host ?? "https://app.rybbit.io"}/api/script.js";
+      rybbitScript.setAttribute("data-site-id", "${analytics.siteId}");
       rybbitScript.async = true;
       rybbitScript.defer = true;
 
       document.head.appendChild(rybbitScript);
     `)
+    }
   }
 
   if (cfg.enableSPA) {

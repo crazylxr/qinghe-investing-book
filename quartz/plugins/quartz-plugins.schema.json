@@ -165,7 +165,17 @@
           }
         },
         "analytics": {
-          "type": "object",
+          "oneOf": [
+            {
+              "type": "object"
+            },
+            {
+              "type": "array",
+              "items": {
+                "type": "object"
+              }
+            }
+          ],
           "description": "Analytics configuration"
         },
         "ignorePatterns": {

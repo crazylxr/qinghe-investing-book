@@ -4,8 +4,7 @@ import { PluginSpecifier } from "./plugins/loader/types"
 import { PluginTypes } from "./plugins/types"
 import { Theme } from "./util/theme"
 
-export type Analytics =
-  | null
+export type AnalyticsProvider =
   | {
       provider: "plausible"
       host?: string
@@ -55,6 +54,8 @@ export type Analytics =
       siteId: string
       host?: string
     }
+
+export type Analytics = AnalyticsProvider | AnalyticsProvider[] | null
 
 export interface GlobalConfiguration {
   pageTitle: string

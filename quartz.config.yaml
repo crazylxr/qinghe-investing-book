@@ -5,9 +5,11 @@ configuration:
   enableSPA: true
   enablePopovers: false
   analytics:
-    provider: umami
-    websiteId: b8b4efd0-332a-4c9a-96d2-e1d127155f5b
-    host: https://cloud.umami.is
+    - provider: umami
+      websiteId: b8b4efd0-332a-4c9a-96d2-e1d127155f5b
+      host: https://cloud.umami.is
+    - provider: google
+      tagId: G-7V3SF2VL81
   locale: zh-CN
   baseUrl: qinghe.taoweng.site
   ignorePatterns:
