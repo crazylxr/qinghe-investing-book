@@ -13,3 +13,6 @@ replit.nix
 quartz/cli/tui/dist/
 .turbo/
 /plugins/book-comments/dist/
+
+# Local editorial reviews, model exports, and QA evidence.
+/review/

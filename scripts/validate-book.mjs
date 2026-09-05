@@ -3,6 +3,7 @@ import path from "node:path"
 import process from "node:process"
 import { fileURLToPath } from "node:url"
 import YAML from "yaml"
+import { commentPath } from "../plugins/book-comments/src/paths.js"
 
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..")
 const contentRoot = path.join(projectRoot, "content")
@@ -35,10 +36,23 @@ const imageFiles = (await fs.readdir(path.join(contentRoot, "assets"))).filter((
   /\.(png|jpe?g|webp|gif|svg)$/i.test(name),
 )
 
-assert(published.length === 14, `manifest 公开页应为14篇，实际${published.length}篇`)
-assert(markdown.length === 14, `内容快照应为14篇，实际${markdown.length}篇`)
-assert(imageFiles.length === 16, `公开插图应为16张，实际${imageFiles.length}张`)
-assert((combined.match(/内容持续修订中/g) ?? []).length === 14, "每篇公开页都应显示修订提示")
+const references = new Set(
+  [...combined.matchAll(/(?:\]\(|src=")assets\/([^)"]+)/g)].map((match) => decodeURI(match[1])),
+)
+const snapshot = JSON.parse(await fs.readFile(path.join(contentRoot, "book.snapshot.json"), "utf8"))
+assert(markdown.length === published.length, "内容快照数量必须与 manifest 一致")
+assert(snapshot.pageCount === published.length, "快照页数记录过期")
+assert(snapshot.imageCount === references.size, "快照图片数量与实际引用不同")
+assert(imageFiles.length === references.size, "资源目录数量与实际引用不同")
+for (const name of references) assert(imageFiles.includes(name), `缺失图片：${name}`)
+assert(
+  JSON.stringify([...references].sort()) === JSON.stringify(snapshot.imageFiles),
+  "图片清单与引用不一致",
+)
+assert(
+  (combined.match(/内容持续修订中/g) ?? []).length === published.length,
+  "每篇公开页都应显示修订提示",
+)
 assert(/\[\^[^\]]+\]:/.test(combined), "应保留脚注")
 assert(/^\|.+\|$/m.test(combined), "应保留表格")
 assert(/\$\$[\s\S]+?\$\$/.test(combined), "应保留块级公式")
@@ -66,6 +80,10 @@ for (const [index, entry] of published.entries()) {
   if (entry.id !== "home") {
     assert(page.includes('class="book-pagination"'), `${entry.output} 缺少章节导航`)
     assert(page.includes("返回完整目录"), `${entry.output} 缺少返回目录链接`)
+    const next = published[index + 1]
+    if (next)
+      assert(page.includes(`href="./${next.url.slice(1)}"`), `${entry.output} 下一页排序错误`)
+    else assert(page.includes("全书读毕 · 回到目录"), "末页应返回目录")
   }
 }
 
@@ -103,10 +121,9 @@ try {
     const html = await fs.readFile(htmlPath, "utf8")
     const keys = [...html.matchAll(/data-comment-path="([^"]+)"/g)].map((match) => match[1])
     const commentsEnabled = commentsPlugin && commentsPlugin.enabled !== false
-    const expected =
-      commentsEnabled && entry.id !== "home"
-        ? [`${commentsPlugin.options.pathPrefix}/${entry.id}`]
-        : []
+    const expected = commentsEnabled
+      ? [commentPath(manifest.entries, entry.id, commentsPlugin.options.pathPrefix)].filter(Boolean)
+      : []
     assert(
       JSON.stringify(keys) === JSON.stringify(expected),
       `${htmlName} 评论标识缺失、重复或归属错误`,

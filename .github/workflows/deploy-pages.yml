@@ -41,6 +41,11 @@ jobs:
           npm run prepare:comments
           npx quartz plugin install --from-config
 
+      - name: Check source and book regressions
+        run: |
+          npm run check
+          npm run test:book
+
       - name: Validate content snapshot
         run: npm run validate:book
 

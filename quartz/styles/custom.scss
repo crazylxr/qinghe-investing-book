@@ -687,3 +687,23 @@ body {
     padding: 20px 24px 0;
   }
 }
+
+// Knowledge figures keep their full intrinsic height; vertical mobile diagrams need it.
+.center > article img.book-knowledge-figure {
+  width: 100%;
+  height: auto;
+  max-height: none;
+  object-fit: contain;
+  content-visibility: visible;
+}
+
+@media (max-width: 800px) {
+  // The footer already links to GitHub; keep the reading area free of floating controls.
+  body .book-github-link {
+    display: none;
+  }
+
+  .center > article img.book-knowledge-figure {
+    width: calc(100% + 48px);
+  }
+}

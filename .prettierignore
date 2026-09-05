@@ -3,3 +3,6 @@ content
 node_modules
 .quartz-cache
 plugins/book-comments/dist
+# Frozen original review and evidence: retain their exact bytes.
+review/2026-09-05-book-review.md
+review/2026-09-05-evidence

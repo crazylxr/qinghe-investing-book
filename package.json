@@ -27,7 +27,8 @@
     "prepare:comments": "node scripts/prepare-comments.mjs",
     "test:comments": "node --test plugins/book-comments/test/*.test.js",
     "test:comments:browser": "node --test plugins/book-comments/test/emoji-race.browser.mjs",
-    "prebuild": "npm run prepare:comments && npm run install-plugins"
+    "prebuild": "npm run prepare:comments && npm run install-plugins",
+    "test:book": "node --test scripts/*.test.mjs"
   },
   "engines": {
     "npm": ">=10.9.2",

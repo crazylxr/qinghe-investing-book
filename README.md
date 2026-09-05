@@ -68,31 +68,31 @@
 1. [一杯奶茶，是怎样变成一门生意的？](https://qinghe.taoweng.site/chapter-01)
 2. [奶茶店一年赚了 10 万，为什么账上却没钱？](https://qinghe.taoweng.site/chapter-02)
 
-### 第二部分：资本回报与增长
+### 第二部分：增长、竞争与资本配置
 
 3. [奶茶店赚到的钱，能不能继续生出更多的钱？](https://qinghe.taoweng.site/chapter-03)
 4. [为什么有的奶茶店越开越赚钱，有的越开越亏？](https://qinghe.taoweng.site/chapter-04)
-
-### 第三部分：竞争与持续性
-
 5. [隔壁也开了一家奶茶店，你的高利润还能维持多久？](https://qinghe.taoweng.site/chapter-05)
-6. [一杯奶茶到底该卖 10 元还是 30 元？](https://qinghe.taoweng.site/chapter-06)
+6. [一杯奶茶到底该卖10元还是30元？](https://qinghe.taoweng.site/chapter-06)
+7. [奶茶店借了80万开店，是聪明还是危险？](https://qinghe.taoweng.site/chapter-07)
+8. [赚到的钱，该继续开店还是分给股东？](https://qinghe.taoweng.site/chapter-08)
 
-### 第四部分：风险与资本配置
-
-7. [奶茶店借了 80 万开店，是聪明还是危险？](https://qinghe.taoweng.site/chapter-07)
-8. [奶茶店老板赚了钱，却全部拿去乱投资](https://qinghe.taoweng.site/chapter-08)
-
-### 第五部分：价格与价值
+### 第三部分：价格、价值与持有
 
 9. [这家奶茶店明明很好，为什么买入后还是亏钱？](https://qinghe.taoweng.site/chapter-09)
 10. [我到底应该用多少钱买下这家奶茶店？](https://qinghe.taoweng.site/chapter-10)
-
-### 第六部分：持有、退出与复盘
-
 11. [我已经买下这家奶茶店，什么时候应该卖掉？](https://qinghe.taoweng.site/chapter-11)
 
-结语与 5 个附录正在补充中，已完成的 14 篇内容（目录、前言、序章及第 1—11 章）均可在线完整阅读。
+### 结语与附录
+
+- [结语：从买下一家店，到拥有一家公司的部分未来](https://qinghe.taoweng.site/conclusion)
+- [附录A：如果真要买一家奶茶店——实地尽调清单](https://qinghe.taoweng.site/appendix-a)
+- [附录B：核心指标与口径速查表](https://qinghe.taoweng.site/appendix-b)
+- [附录C：估值工具箱](https://qinghe.taoweng.site/appendix-c)
+- [附录D：普通框架失效时怎么办](https://qinghe.taoweng.site/appendix-d)
+- [附录E：十年财务分析与投资备忘录模板](https://qinghe.taoweng.site/appendix-e)
+
+本仓库包含可完整阅读的修订稿，共20页（目录、前言、序章、第1—11章、结语及五篇附录），引用20张插图。
 
 ## 阅读体验
 
@@ -156,6 +156,8 @@
 │   ├── preface.md            # 前言
 │   ├── chapter-00.md         # 序章
 │   ├── chapter-01.md ...     # 第 1—11 章
+│   ├── conclusion.md         # 结语
+│   ├── appendix-a.md ...     # 附录 A—E
 │   └── assets/               # 正文实际引用的公开插图
 ├── plugins/book-toolbar/     # 书籍导航、进度与移动端工具栏
 ├── quartz/                   # Quartz 5 核心与站点样式
@@ -197,6 +199,8 @@ npm run validate:book
 - `npm run check`：执行 TypeScript 类型检查与 Prettier 格式检查；
 - `npm run build`：生成静态站点到 `public/`；
 - `npm run validate:book`：检查公开页面、图片、导航、断链及隐私边界。
+- `npm run test:book`：验证新增页面导航、评论范围及资源缺失时保留旧快照。
+- `node scripts/render-book-figures.mjs --data <重算结果.json> --output <书稿附件目录>`：重制知识图SVG与PNG，保持数字取自模型。
 
 ## 从 Obsidian 同步书稿
 
@@ -206,13 +210,14 @@ Obsidian 中的书稿是正文的唯一来源，仓库中的 `content/` 是发�
 npm run sync:book -- --source "/path/to/Obsidian/用一家奶茶店学会股票投资"
 ```
 
-同步过程由 `book.manifest.json` 白名单控制，只会复制清单内的 14 篇公开 Markdown 和这些正文实际引用的图片，并将链接改写为网站可用路径。
+同步过程由 `book.manifest.json` 白名单控制，只会复制manifest 中标为 published 的公开 Markdown 和这些正文实际引用的图片，并将链接改写为网站可用路径。
 
 以下内容不会进入公开站点：
 
 - 原始资料和数据底稿；
 - 案例核验记录；
 - 财务模型与 Excel 文件；
+- 内部审稿报告、模型导出数据和本地检查证据（`review/`不提交至公开仓库）；
 - 其他 Obsidian Vault 内容；
 - 本机绝对路径和内部工作链接。
 
@@ -230,7 +235,7 @@ git diff -- content book.manifest.json
 ## 读者讨论
 
 前言、序章和第 1—11 章末尾通过本地插件 `@qinghe/book-comments` 接入博客现有的 Twikoo 服务。
-首页与未发布章节不开放评论。表单必填项、审核、邮件通知等配置与博客共用。
+评论范围保持为前言、序章与第 1—11 章；首页、结语和附录不开放评论。表单必填项、审核、邮件通知等配置与博客共用。
 
 - 在 `quartz.config.yaml` 的插件选项中配置 `envId` 和 `pathPrefix`；只需要公开服务地址，不需要数据库凭据。
 - 评论以固定章节 ID 分类，例如 `/qinghe-book/chapter-01`。已有留言后，请保持前缀和章节 ID 稳定；修改标题、域名和访问参数不会改变评论归属。
@@ -259,7 +264,7 @@ git diff -- content book.manifest.json
 
 - `book.manifest.json` 是网站侧章节顺序、公开状态和稳定 URL 的唯一配置；
 - 所有已发布章节统一标记“内容持续修订中”；
-- 结语和附录在完成前只展示“即将补充”，不会生成空白页面；
+- 结语和附录拥有稳定网址与完整导航；页数和图片数量由 manifest 与正文引用推导；
 - 书中企业“青禾茶铺”为教学用虚构案例；
 - 本书用于投资教育和方法讨论，不构成证券推荐或个性化投资建议；
 - 项目授权范围以 [LICENSE.txt](LICENSE.txt) 为准。
