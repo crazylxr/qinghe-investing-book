@@ -11,8 +11,8 @@ export const BookCommentsAssets = () => ({
     const destination = join(argv.output, "static/twikoo")
     await mkdir(destination, { recursive: true })
     for (const [input, output] of [
-      ["dist/twikoo.min.js", "twikoo-1.6.44-qinghe.1.min.js"],
-      ["dist/twikoo.min.js.LICENSE.txt", "twikoo-1.6.44-qinghe.1.min.js.LICENSE.txt"],
+      ["dist/twikoo.min.js", "twikoo-1.6.44-qinghe.2.min.js"],
+      ["dist/twikoo.min.js.LICENSE.txt", "twikoo-1.6.44-qinghe.2.min.js.LICENSE.txt"],
       ["LICENSE", "LICENSE"],
     ]) {
       const target = join(destination, output)

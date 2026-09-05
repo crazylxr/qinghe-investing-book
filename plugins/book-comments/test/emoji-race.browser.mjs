@@ -8,6 +8,26 @@ import { chromium } from "playwright"
 
 const publicRoot = fileURLToPath(new URL("../../../public/", import.meta.url))
 
+async function assertStyledComments(page, chapter) {
+  const section = page.locator(`.book-comments[data-comment-path="/qinghe-book/${chapter}"]`)
+  await section.scrollIntoViewIfNeeded()
+  await page.waitForSelector(
+    `.book-comments[data-comment-path="/qinghe-book/${chapter}"][data-state="ready"]`,
+  )
+  assert.equal(await page.locator(".twikoo").count(), 1)
+  const avatar = await page.locator(".tk-submit .tk-avatar").boundingBox()
+  assert.ok(avatar?.width > 0 && avatar.width <= 64, `Avatar width was ${avatar?.width}px`)
+  assert.equal(
+    await page.locator(".tk-submit").evaluate((element) => getComputedStyle(element).display),
+    "flex",
+    "Twikoo form styles must survive chapter navigation",
+  )
+  assert.ok(
+    await section.evaluate((element) => element.scrollWidth <= element.clientWidth + 1),
+    "The discussion must fit its reading column",
+  )
+}
+
 for (const navigate of [false, true]) {
   test(`delayed emoji response with ${navigate ? "chapter navigation" : "the original chapter"}`, async () => {
     const server = http.createServer((request, response) =>
@@ -83,6 +103,29 @@ for (const navigate of [false, true]) {
         await page.locator(".book-comments").getAttribute("data-comment-path"),
         `/qinghe-book/chapter-0${navigate ? 2 : 1}`,
       )
+      await assertStyledComments(page, `chapter-0${navigate ? 2 : 1}`)
+      if (navigate) {
+        const styleCount = await page.locator("head style").count()
+        await page.evaluate(() => window.spaNavigate(new URL("/chapter-04", location.href)))
+        await assertStyledComments(page, "chapter-04")
+        await page.goBack()
+        await assertStyledComments(page, "chapter-02")
+        await page.goForward()
+        await assertStyledComments(page, "chapter-04")
+        for (const layout of ["three", "two", "focus"]) {
+          await page.locator(`[data-layout-choice="${layout}"]`).click()
+          await assertStyledComments(page, "chapter-04")
+        }
+        await page.setViewportSize({ width: 390, height: 844 })
+        await page.evaluate(() => window.spaNavigate(new URL("/chapter-01", location.href)))
+        await assertStyledComments(page, "chapter-01")
+        assert.equal(
+          await page.locator("head style").count(),
+          styleCount,
+          "Navigation must not duplicate styles",
+        )
+        assert.deepEqual(errors, [])
+      }
     } finally {
       await browser?.close()
       server.closeAllConnections()

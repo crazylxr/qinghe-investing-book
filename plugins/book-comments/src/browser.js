@@ -1,7 +1,7 @@
 import { createCommentSession } from "./lifecycle.js"
 
 let libraryPromise
-const libraryReady = () => window.twikoo?.version === "1.6.44" && window.twikoo.qinghePatch === 1
+const libraryReady = () => window.twikoo?.version === "1.6.44" && window.twikoo.qinghePatch === 2
 function loadLibrary(src) {
   if (libraryReady()) return Promise.resolve(window.twikoo)
   if (!libraryPromise) {

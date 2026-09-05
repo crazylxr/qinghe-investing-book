@@ -126,7 +126,7 @@ try {
 
   if (commentsPlugin && commentsPlugin.enabled !== false) {
     const asset = await fs.stat(
-      path.join(publicRoot, "static/twikoo/twikoo-1.6.44-qinghe.1.min.js"),
+      path.join(publicRoot, "static/twikoo/twikoo-1.6.44-qinghe.2.min.js"),
     )
     assert(asset.size > 100_000, "Twikoo 同域浏览器资源缺失")
   }

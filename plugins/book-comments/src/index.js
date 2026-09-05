@@ -24,7 +24,7 @@ export function BookComments({ envId, pathPrefix = "/qinghe-book" }) {
       "data-comment-path": path,
       "data-env-id": envId,
       "data-page-url": pageUrl,
-      "data-script-src": `${base}/static/twikoo/twikoo-1.6.44-qinghe.1.min.js`,
+      "data-script-src": `${base}/static/twikoo/twikoo-1.6.44-qinghe.2.min.js`,
       children: [
         jsx("h2", { id: "reader-discussion-title", children: "读者讨论" }),
         jsx("p", {
