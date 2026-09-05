@@ -22,11 +22,14 @@
   "quartz": {
     "name": "book-toolbar",
     "displayName": "Book Toolbar",
-    "category": "component",
+    "category": [
+      "transformer",
+      "component"
+    ],
     "version": "1.0.0",
     "quartzVersion": ">=5.0.0",
     "dependencies": [],
-    "defaultOrder": 50,
+    "defaultOrder": 35,
     "defaultEnabled": true,
     "defaultOptions": {},
     "components": {

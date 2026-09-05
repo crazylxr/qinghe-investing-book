@@ -20,7 +20,10 @@ configuration:
     fontOrigin: googleFonts
     cdnCaching: true
     typography:
-      header: Noto Serif SC
+      header:
+        name: Noto Serif SC
+        weights: [400, 600]
+        includeItalic: false
       body: Noto Sans SC
       code: IBM Plex Mono
     colors:
@@ -85,6 +88,13 @@ plugins:
     order: 60
   - source: "@quartz-community/quartz-fonts"
     enabled: true
+    options:
+      useThemeFonts: false
+      fontOrigin: local
+      header: '"Noto Serif SC", "Songti SC", STSong, Georgia, serif'
+      body: '"Noto Serif SC", "Songti SC", STSong, Georgia, serif'
+      interface: '"Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif'
+      title: '"Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif'
   - source: "@quartz-community/remove-draft"
     enabled: true
   - source: "@quartz-community/content-index"
@@ -105,6 +115,8 @@ plugins:
       priority: 10
   - source: "@quartz-community/search"
     enabled: true
+    options:
+      enablePreview: false
     layout:
       position: left
       priority: 20
@@ -129,7 +141,7 @@ plugins:
   - source: "@qinghe/book-toolbar"
     enabled: true
     options: {}
-    order: 50
+    order: 35
     layout:
       position: beforeBody
       priority: 1
