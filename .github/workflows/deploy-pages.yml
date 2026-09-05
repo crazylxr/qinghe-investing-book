@@ -37,7 +37,9 @@ jobs:
         run: npm ci
 
       - name: Install locked Quartz plugins
-        run: npx quartz plugin install --from-config
+        run: |
+          npm run prepare:comments
+          npx quartz plugin install --from-config
 
       - name: Validate content snapshot
         run: npm run validate:book

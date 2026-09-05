@@ -227,6 +227,20 @@ git diff -- content book.manifest.json
 
 确认发布快照只包含预期正文与图片，再提交变更。
 
+## 读者讨论
+
+前言、序章和第 1—11 章末尾通过本地插件 `@qinghe/book-comments` 接入博客现有的 Twikoo 服务。
+首页与未发布章节不开放评论。表单必填项、审核、邮件通知等配置与博客共用。
+
+- 在 `quartz.config.yaml` 的插件选项中配置 `envId` 和 `pathPrefix`；只需要公开服务地址，不需要数据库凭据。
+- 评论以固定章节 ID 分类，例如 `/qinghe-book/chapter-01`。已有留言后，请保持前缀和章节 ID 稳定；修改标题、域名和访问参数不会改变评论归属。
+- Twikoo 前端固定为 `1.6.44`，`npm run dev` 和 `npm run build` 会自动构建插件并准备同域静态资源。直接执行 Quartz CLI 前，先运行 `npm run prepare:comments`。
+- 评论在滚动接近页面末尾时加载，失败后可以重试。阅读进度只计算正文，不受评论数量影响。
+- `npm run test:comments` 验证章节隔离、过期加载清理和阅读进度；`npm run validate:book` 在构建后检查实际页面与资源。
+- 停用时将该插件的 `enabled` 改为 `false`，数据库留言仍然保留。升级 Twikoo 前，需要重新验证 Vue 实例清理与快速切章行为。
+
+本地开发和生产环境连接的是同一套评论服务，评论链接固定使用正式章节网址。自动验证只读取评论；真实留言、回复与通知请手动验收，尤其确认通知链接指向实际章节网址。以后添加“最新评论”时，需按书站的章节评论标识筛选，避免汇总博客的留言。
+
 ## 部署
 
 `main` 分支每次推送后，GitHub Actions 会自动：

@@ -133,6 +133,14 @@ plugins:
     layout:
       position: beforeBody
       priority: 1
+  - source: "@qinghe/book-comments"
+    enabled: true
+    options:
+      envId: https://taoweng-twikoo-netlify.netlify.app/.netlify/functions/twikoo
+      pathPrefix: /qinghe-book
+    layout:
+      position: afterBody
+      priority: 10
 layout:
   groups: {}
   byPageType:

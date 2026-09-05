@@ -2,6 +2,7 @@ import fs from "node:fs/promises"
 import path from "node:path"
 import process from "node:process"
 import { fileURLToPath } from "node:url"
+import YAML from "yaml"
 
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..")
 const contentRoot = path.join(projectRoot, "content")
@@ -9,6 +10,8 @@ const publicRoot = path.join(projectRoot, "public")
 const manifest = JSON.parse(await fs.readFile(path.join(projectRoot, "book.manifest.json"), "utf8"))
 const published = manifest.entries.filter((entry) => entry.status === "published")
 const failures = []
+const config = YAML.parse(await fs.readFile(path.join(projectRoot, "quartz.config.yaml"), "utf8"))
+const commentsPlugin = config.plugins.find((plugin) => plugin.source === "@qinghe/book-comments")
 
 function assert(condition, message) {
   if (!condition) failures.push(message)
@@ -97,7 +100,36 @@ try {
     const htmlPath = path.join(publicRoot, htmlName)
     const stat = await fs.stat(htmlPath)
     assert(stat.size > 10_000, `${htmlName} 不是完整内容页或发生了重定向循环`)
+    const html = await fs.readFile(htmlPath, "utf8")
+    const keys = [...html.matchAll(/data-comment-path="([^"]+)"/g)].map((match) => match[1])
+    const commentsEnabled = commentsPlugin && commentsPlugin.enabled !== false
+    const expected =
+      commentsEnabled && entry.id !== "home"
+        ? [`${commentsPlugin.options.pathPrefix}/${entry.id}`]
+        : []
+    assert(
+      JSON.stringify(keys) === JSON.stringify(expected),
+      `${htmlName} 评论标识缺失、重复或归属错误`,
+    )
+    if (expected.length) {
+      const pageUrl = new URL(
+        entry.url.replace(/^\//, ""),
+        `https://${config.configuration.baseUrl.replace(/\/$/, "")}/`,
+      ).href
+      assert(html.includes(`data-page-url="${pageUrl}"`), `${htmlName} 评论通知应使用正式章节网址`)
+      assert(
+        html.indexOf('class="book-pagination"') < html.indexOf('class="book-comments"'),
+        `${htmlName} 评论区应位于章节导航之后`,
+      )
+    }
   }
+
+  if (commentsPlugin && commentsPlugin.enabled !== false) {
+    const asset = await fs.stat(path.join(publicRoot, "static/twikoo/twikoo-1.6.44.min.js"))
+    assert(asset.size > 100_000, "Twikoo 同域浏览器资源缺失")
+  }
+  const notFound = await fs.readFile(path.join(publicRoot, "404.html"), "utf8")
+  assert(!notFound.includes("data-comment-path="), "404 不应显示评论区")
 
   for (const htmlPath of publicFiles.filter((file) => file.endsWith(".html"))) {
     const html = await fs.readFile(htmlPath, "utf8")
@@ -125,7 +157,7 @@ try {
     }
   }
 } catch (error) {
-  if (error?.code !== "ENOENT") throw error
+  if (error?.code !== "ENOENT" || error.path !== publicRoot) throw error
   console.warn("public/ 尚未生成，已跳过构建产物检查。")
 }
 

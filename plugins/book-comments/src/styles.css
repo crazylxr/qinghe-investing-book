@@ -1,0 +1,80 @@
+.book-comments {
+  box-sizing: border-box;
+  width: 100%;
+  margin: 24px 0 0;
+  padding: 32px 40px;
+  color: var(--ink);
+  background: var(--paper-white);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  font-family: "Noto Sans SC", "PingFang SC", sans-serif;
+  font-size: 14px;
+  line-height: 1.7;
+}
+.book-comments h2 {
+  margin: 0 0 8px;
+  color: var(--tea-deep);
+  font-family: "Noto Serif SC", "Songti SC", serif;
+  font-size: 23px;
+}
+.book-comments__intro,
+.book-comments__status {
+  margin: 0 0 20px;
+  color: var(--muted);
+}
+.book-comments [hidden] {
+  display: none !important;
+}
+.book-comments__retry {
+  padding: 9px 16px;
+  color: var(--paper-white);
+  background: var(--tea-deep);
+  border: 0;
+  border-radius: 6px;
+  font: inherit;
+  cursor: pointer;
+}
+.book-comments :focus-visible {
+  outline: 2px solid var(--tea);
+  outline-offset: 3px;
+}
+.book-comments .twikoo {
+  color: var(--ink);
+}
+.book-comments .el-input__inner,
+.book-comments .el-textarea__inner {
+  color: var(--ink);
+  background: var(--paper-white);
+  border-color: var(--line);
+  font: inherit;
+}
+.book-comments .el-button--primary:not(.is-disabled) {
+  background: var(--tea);
+  border-color: var(--tea);
+}
+.book-comments .tk-action-icon,
+.book-comments .tk-action-link,
+.book-comments .tk-nick-link {
+  color: var(--tea);
+}
+.book-comments .tk-comment {
+  overflow-wrap: anywhere;
+}
+@media (max-width: 800px) {
+  body:has(.book-comments[data-visible]) .book-github-link {
+    display: none;
+  }
+  .book-comments {
+    padding: 24px 18px;
+  }
+  .book-comments h2 {
+    font-size: 21px;
+  }
+  .book-comments .tk-meta-input {
+    flex-direction: column;
+  }
+  .book-comments .tk-meta-input .el-input {
+    width: 100%;
+    margin: 0 0 8px;
+  }
+}

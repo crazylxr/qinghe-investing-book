@@ -1,0 +1,48 @@
+{
+  "name": "@qinghe/book-comments",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./components": {
+      "types": "./index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "peerDependencies": {
+    "preact": "^10.0.0"
+  },
+  "quartz": {
+    "name": "book-comments",
+    "displayName": "Book Comments",
+    "description": "Chapter discussions using the shared Twikoo service",
+    "category": [
+      "component",
+      "emitter"
+    ],
+    "version": "1.0.0",
+    "quartzVersion": ">=5.0.0",
+    "dependencies": [],
+    "defaultEnabled": false,
+    "defaultOptions": {
+      "pathPrefix": "/qinghe-book"
+    },
+    "components": {
+      "BookComments": {
+        "name": "book-comments",
+        "displayName": "Book Comments",
+        "description": "Reader discussions after published chapters",
+        "version": "1.0.0",
+        "defaultPosition": "afterBody",
+        "defaultPriority": 10
+      }
+    }
+  }
+}

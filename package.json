@@ -14,6 +14,7 @@
   "scripts": {
     "quartz": "./quartz/bootstrap-cli.mjs",
     "dev": "npx quartz build --serve",
+    "predev": "npm run prepare:comments && npm run install-plugins",
     "build": "npx quartz build",
     "sync:book": "node scripts/sync-book.mjs",
     "validate:book": "node scripts/validate-book.mjs",
@@ -23,7 +24,9 @@
     "test": "tsx --test",
     "profile": "0x -D prof ./quartz/bootstrap-cli.mjs build --concurrency=1",
     "install-plugins": "npx tsx ./quartz/plugins/loader/install-plugins.ts",
-    "prebuild": "npm run install-plugins"
+    "prepare:comments": "node scripts/prepare-comments.mjs",
+    "test:comments": "node --test plugins/book-comments/test/*.test.js",
+    "prebuild": "npm run prepare:comments && npm run install-plugins"
   },
   "engines": {
     "npm": ">=10.9.2",
@@ -41,6 +44,7 @@
     "quartz": "./quartz/bootstrap-cli.mjs"
   },
   "dependencies": {
+    "@qinghe/book-comments": "file:plugins/book-comments",
     "@qinghe/book-toolbar": "file:plugins/book-toolbar",
     "@clack/prompts": "^0.11.0",
     "@floating-ui/dom": "^1.7.4",
@@ -114,6 +118,7 @@
     "sharp": "^0.34.5",
     "source-map-support": "^0.5.21",
     "to-vfile": "^8.0.0",
+    "twikoo": "1.6.44",
     "unified": "^11.0.5",
     "unist-util-visit": "^5.1.0",
     "vfile": "^6.0.3",
