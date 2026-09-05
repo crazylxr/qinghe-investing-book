@@ -125,7 +125,9 @@ try {
   }
 
   if (commentsPlugin && commentsPlugin.enabled !== false) {
-    const asset = await fs.stat(path.join(publicRoot, "static/twikoo/twikoo-1.6.44.min.js"))
+    const asset = await fs.stat(
+      path.join(publicRoot, "static/twikoo/twikoo-1.6.44-qinghe.1.min.js"),
+    )
     assert(asset.size > 100_000, "Twikoo 同域浏览器资源缺失")
   }
   const notFound = await fs.readFile(path.join(publicRoot, "404.html"), "utf8")

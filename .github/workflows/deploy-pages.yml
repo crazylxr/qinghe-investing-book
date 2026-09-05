@@ -50,6 +50,11 @@ jobs:
       - name: Validate production output
         run: npm run validate:book
 
+      - name: Test comments and delayed emoji navigation
+        run: |
+          npm run test:comments
+          npm run test:comments:browser
+
       - name: Configure Pages
         uses: actions/configure-pages@v5
 

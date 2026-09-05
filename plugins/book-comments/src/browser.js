@@ -1,8 +1,9 @@
 import { createCommentSession } from "./lifecycle.js"
 
 let libraryPromise
+const libraryReady = () => window.twikoo?.version === "1.6.44" && window.twikoo.qinghePatch === 1
 function loadLibrary(src) {
-  if (window.twikoo?.version === "1.6.44") return Promise.resolve(window.twikoo)
+  if (libraryReady()) return Promise.resolve(window.twikoo)
   if (!libraryPromise) {
     libraryPromise = new Promise((resolve, reject) => {
       const script = document.createElement("script")
@@ -18,8 +19,7 @@ function loadLibrary(src) {
       script.src = src
       script.async = true
       script.dataset.persist = ""
-      script.onload = () =>
-        finish(window.twikoo?.version === "1.6.44" ? null : new Error("Unexpected Twikoo version"))
+      script.onload = () => finish(libraryReady() ? null : new Error("Unexpected Twikoo version"))
       script.onerror = () => finish(new Error("Script unavailable"))
       document.head.append(script)
     }).catch((error) => {
